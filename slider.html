@@ -26,7 +26,7 @@ ul.kw{overflow: hidden; height: 200px; width: 900px;}
 ul.kw li{ float: left; width: 300px; background: #ccc; color:#000; text-align: center; line-height: 200px; height: 200px; overflow: hidden; position: relative; font-size: 20px;z-index: 0 }
 ul.kw li.prev{margin-left: -300px; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;}
 ul.kw li.next{margin-right: 300px; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;}
-ul.kw li.current{margin-left: 0px !important; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;z-index: 999}
+ul.kw li.current{margin-left: 0px !important;z-index: 999}
 </style>
 </head>
 <body>
@@ -44,21 +44,17 @@ var listing = document.getElementById("slide").getElementsByTagName('li');
 var currentItem = 0;
 setInterval(nextSlider,1000);
 function nextSlider(){
-
-	if(currentItem = 0) {}
-	if(currentItem < listing.length) {
-		currentItem++;
-	}
-	else{
+	if(currentItem < listing.length-1) {
+		currentItem ++;
+	}else {
 		currentItem = 0;
 	}	
-
 	mySlider(currentItem);
 	console.log("currentItem" + currentItem);
 }
 function mySlider(index){
 	for(i = 0;i <listing.length;i++) {
-		console.log("i " +i +" index "+ index );	
+		console.log(" i "+ i +" index " + index );	
 
 		if(i == index) {
 			document.getElementById("slide").getElementsByTagName('li')[i].className = "current";
