@@ -22,10 +22,11 @@ a:hover { cursor:pointer; text-decoration:none; text-indent:0}
 /*CSS Reset Ends*/
 
 #wrapper{width: 300px; height: 200px; overflow: hidden;}
-ul.kw{overflow: hidden; height: 200px; width: 900px;} 
+ul.kw{overflow: hidden; height: 200px; width: 1500px;} 
 ul.kw li{ float: left; width: 300px; background: #ccc; color:#000; text-align: center; line-height: 200px; height: 200px; overflow: hidden; position: relative; font-size: 20px;z-index: 0 }
 ul.kw li.prev{margin-left: -300px; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;}
 ul.kw li.next{margin-right: 300px; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;}
+ul.kw li.reset{margin-right: 300px; -moz-transition: all 0.65s ease; -o-transition: all 0.65s ease; transition: all 0.65s ease; -webkit-transition: all 0.65s ease;}
 ul.kw li.current{margin-left: 0px !important;z-index: 999}
 </style>
 </head>
@@ -42,7 +43,7 @@ ul.kw li.current{margin-left: 0px !important;z-index: 999}
 <script type="text/javascript">	
 var listing = document.getElementById("slide").getElementsByTagName('li');
 var currentItem = 0;
-setInterval(nextSlider,1000);
+setInterval(nextSlider,500);
 function nextSlider(){
 	if(currentItem < listing.length-1) {
 		currentItem ++;
@@ -58,10 +59,17 @@ function mySlider(index){
 
 		if(i == index) {
 			document.getElementById("slide").getElementsByTagName('li')[i].className = "current";
-		}else if(i == index-1){
+		}
+		else if(i == index-1){
 			document.getElementById("slide").getElementsByTagName('li')[i].className = "prev";
-		} else if(i == index+1){
+		} 
+		else if(i == index+1){
 			document.getElementById("slide").getElementsByTagName('li')[i].className = "next";
+		}
+		var j = listing.length-1;
+		if(index == 0 && document.getElementById("slide").getElementsByTagName('li')[j].className == "current"){
+			document.getElementById("slide").getElementsByTagName('li')[j].className = "prev";
+			document.getElementById("slide").getElementsByTagName('li')[0].className = "current";
 		}
 	}
 }
